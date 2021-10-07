@@ -5,6 +5,10 @@
 
 #include "picosystem.hpp"
 
+#ifdef MICROPY_BUILD_TYPE
+  #define PIXEL_DOUBLE
+#endif
+
 namespace picosystem {
 
   uint32_t _debug;
@@ -49,6 +53,7 @@ using namespace picosystem;
 // called when they implement the init(), update(), and render()
 // functions in their project
 
+#ifndef MICROPY_BUILD_TYPE
 int main() {
   _init_hardware();
 
@@ -132,3 +137,4 @@ int main() {
   }
 
 }
+#endif
